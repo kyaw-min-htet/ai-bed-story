@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 
 // CORS configuration
 const allowedOrigins = process.env.NODE_ENV === 'production'
-    ? ['https://ai-bed-story-frontend.onrender.com', 'https://ai-bed-story.netlify.app', process.env.FRONTEND_URL].filter(Boolean) as string[]
+    ? ['https://ai-bed-story-frontend.onrender.com', 'https://ai-bed-story-3.onrender.com', 'https://ai-bed-story.netlify.app', process.env.FRONTEND_URL].filter(Boolean) as string[]
     : ['http://localhost:5173', 'http://localhost:3000'];
 
 app.use(cors({
