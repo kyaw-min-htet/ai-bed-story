@@ -3,40 +3,46 @@ interface StoryPromptParams {
   age: number;
   theme?: string;
   moral?: string;
-  length: 'short' | 'medium' | 'long';
+  length: "short" | "medium" | "long";
 }
 
 export class PromptService {
-  static buildStoryPrompt({ childName, age, theme, moral, length }: StoryPromptParams): string {
+  static buildStoryPrompt({
+    childName,
+    age,
+    theme,
+    moral,
+    length,
+  }: StoryPromptParams): string {
     const lengthGuide: Record<string, string> = {
-      short: '200-300 words',
-      medium: '400-600 words',
-      long: '700-1000 words'
+      short: "200-300 words",
+      medium: "400-600 words",
+      long: "700-1000 words",
     };
 
     const basePrompt = `Create a magical bedtime story for ${childName}, who is ${age} years old.`;
 
     const themeSection = theme
       ? `The story should be about: ${theme}.`
-      : 'Choose an age-appropriate, imaginative theme.';
+      : "Choose an age-appropriate, imaginative theme.";
 
     const moralSection = moral
       ? `Include this moral lesson: ${moral}.`
-      : 'Include a gentle, positive life lesson.';
+      : "Include a gentle, positive life lesson.";
 
     const lengthSection = `The story should be approximately ${lengthGuide[length]}.`;
 
-//     const styleGuide = `
-// Style guidelines:
-// - Use simple, age-appropriate language for a ${age}-year-old
-// - Make it warm, comforting, and suitable for bedtime
-// - Include vivid imagery and gentle adventure
-// - End with a peaceful, sleep-inducing conclusion
-// - Use the child's name (${childName}) as the main character
-// - Format with clear paragraphs for easy reading
-// `;
+    //     const styleGuide = `
+    // Style guidelines:
+    // - Use simple, age-appropriate language for a ${age}-year-old
+    // - Make it warm, comforting, and suitable for bedtime
+    // - Include vivid imagery and gentle adventure
+    // - End with a peaceful, sleep-inducing conclusion
+    // - Use the child's name (${childName}) as the main character
+    // - Format with clear paragraphs for easy reading
+    // `;
 
-const styleGuide = `
+    const styleGuide = `
 Style guidelines:
 - Use simple, rhythmic language for a ${age}-year-old.
 - Character: Use ${childName} as the protagonist.
@@ -45,7 +51,7 @@ Style guidelines:
 - Interaction: Add 1-2 tiny pauses or gentle questions for ${childName} to keep them engaged.
 - Pacing: Shorten the sentences and use "softer" words (e.g., drift, glow, hum, snuggle) as the story reaches the end.
 - Conclusion: A specific "goodnight" ritual within the story (e.g., tucking in the stars).
-`
+`;
 
     return `${basePrompt}\n\n${themeSection}\n${moralSection}\n${lengthSection}\n${styleGuide}`;
   }
