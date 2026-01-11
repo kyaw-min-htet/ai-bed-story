@@ -10,10 +10,20 @@ import storyRouter from './routes/story.route.js';
 const app: Express = express();
 const PORT = process.env.PORT || 3001;
 
-// CORS configuration
-const allowedOrigins = process.env.NODE_ENV === 'production'
-    ? ['https://ai-bed-story-frontend.onrender.com', 'https://ai-bed-story-3.onrender.com', 'https://ai-bed-story.netlify.app', process.env.FRONTEND_URL].filter(Boolean) as string[]
-    : ['http://localhost:5173', 'http://localhost:3000'];
+// CORS configuration - allow all origins for development and Render
+const isProduction = process.env.NODE_ENV === 'production';
+console.log('NODE_ENV:', process.env.NODE_ENV, 'isProduction:', isProduction);
+
+const allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://ai-bed-story-frontend.onrender.com',
+    'https://ai-bed-story-3.onrender.com',
+    'https://ai-bed-story.netlify.app',
+    process.env.FRONTEND_URL
+].filter(Boolean) as string[];
+
+console.log('Allowed origins:', allowedOrigins);
 
 app.use(cors({
     origin: allowedOrigins,
