@@ -10,8 +10,15 @@ import storyRouter from './routes/story.route.js';
 const app: Express = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
-app.use(cors());
+// CORS configuration
+const allowedOrigins = process.env.NODE_ENV === 'production'
+    ? ['https://ai-bed-story-frontend.onrender.com', 'https://ai-bed-story.netlify.app', process.env.FRONTEND_URL].filter(Boolean) as string[]
+    : ['http://localhost:5173', 'http://localhost:3000'];
+
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true
+}));
 app.use(express.json());
 
 // Health check
