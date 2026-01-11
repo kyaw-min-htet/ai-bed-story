@@ -19,5 +19,5 @@ RUN npm install --production
 COPY --from=build /app/dist ./dist
 EXPOSE 3001
 
-CMD ["node", "dist/server.js"]
+CMD ["node", "src/index.js"]
 
