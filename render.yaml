@@ -4,6 +4,7 @@ services:
     name: ai-bed-story-backend
     env: node
     rootDir: backend
+    plan: free
     buildCommand: npm install
     startCommand: npm run build && npm start
     envVars:
@@ -17,9 +18,10 @@ services:
   # Frontend Service (Static Site)
   - type: web
     name: ai-bed-story-frontend
+    plan: free
     env: static
     rootDir: frontend
-    buildCommand: npm install
+    buildCommand: npm install && npm run build
 
     envVars:
       - key: VITE_API_URL
