@@ -21,7 +21,7 @@ services:
     env: static
     rootDir: frontend
     buildCommand: npm install && npm run build
-    staticPublishPath: frontend/dist
+    PublishPath: frontend/dist
     envVars:
       - key: VITE_API_URL
         value: https://ai-bed-story-backend.onrender.com
